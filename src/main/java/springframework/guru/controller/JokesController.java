@@ -5,21 +5,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import springframework.guru.service.JokesService;
+import springframework.guru.service.JokesServiceImpl;
 
 @Controller
 public class JokesController {
 	
 	@Autowired
-	private JokesService jokesService;
+	private JokesServiceImpl jokesService;
 	
-	@RequestMapping("/")
+	@RequestMapping({"/",""})
 	public String getJoke(Model model) {
 		
 		
-		model.addAttribute("joke", jokesService.getChuckNorrisString());
+		model.addAttribute("joke", jokesService.getJoke());
 		
-		System.out.println(jokesService.getChuckNorrisString());
+		System.out.println(jokesService.getJoke());
 		
 		
 		return "chucknorris";
